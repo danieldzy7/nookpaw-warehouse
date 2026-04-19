@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "NookPaw Warehouse",
@@ -34,7 +35,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: themeBootstrap }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

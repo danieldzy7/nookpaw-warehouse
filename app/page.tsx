@@ -98,6 +98,15 @@ export default function HomePage() {
     void loadMovements();
   }, [loadMovements]);
 
+  useEffect(() => {
+    function onDataChanged() {
+      void Promise.all([loadProducts(), loadMovements()]);
+    }
+    window.addEventListener("np:data-changed", onDataChanged);
+    return () =>
+      window.removeEventListener("np:data-changed", onDataChanged);
+  }, [loadProducts, loadMovements]);
+
   function openMove(product: ProductWithStock, type: MovementType) {
     setDialogProduct(product);
     setDialogType(type);

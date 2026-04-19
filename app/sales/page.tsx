@@ -150,6 +150,15 @@ export default function SalesPage() {
     void load();
   }, [load]);
 
+  useEffect(() => {
+    function onDataChanged() {
+      void load();
+    }
+    window.addEventListener("np:data-changed", onDataChanged);
+    return () =>
+      window.removeEventListener("np:data-changed", onDataChanged);
+  }, [load]);
+
   const series = useMemo(() => {
     if (!data) return [];
     const skus = new Set<string>();

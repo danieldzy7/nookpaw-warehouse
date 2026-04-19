@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AssistantNavButton } from "@/app/components/AssistantDock";
 import { ThemeToggle } from "@/app/components/ThemeToggle";
 
 type NavItem = { href: string; label: string };
@@ -39,6 +40,7 @@ export function Nav({ rightSlot }: { rightSlot?: React.ReactNode }) {
         </nav>
       </div>
       <div className="topbar-actions">
+        <AssistantNavButton />
         <ThemeToggle />
         {rightSlot}
       </div>
